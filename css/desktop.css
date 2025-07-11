@@ -1,0 +1,42 @@
+.container {
+    padding: 0 var(--spacing-xl);
+  }
+  .section-title {
+    font-size: var(--font-size-5xl);
+  }
+  .hero-title {
+    font-size: var(--font-size-5xl);
+  }
+  .avatar-img {
+    width: 250px;
+    height: 250px;
+  }
+  .skill-card {
+    flex: 0 0 calc(33.333% - var(--spacing-lg));
+  }
+  .work-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .hidden-lg { display: none; }
+
+  .nav-logo img{
+    height: 60px;
+  }
+
+  .nav-menu {
+  gap: var(--spacing-xl);
+}
+
+.nav-menu li svg{
+  opacity: 0;
+  display: none;
+}
+
+.nav-logo{
+  width: 65px;
+  height: 65px;
+}
+
