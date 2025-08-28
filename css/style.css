@@ -932,7 +932,7 @@ body:not(.dark) .nav-menu.active li svg{
   align-items: center;
   justify-content: center;
   gap: var(--spacing-md);
-  background: rgba(22, 29, 45, 0.85); /* overlay oscuro */
+  background: rgba(22, 29, 45, 0.60); /* overlay  */
   opacity: 0;
   transform: translateY(20px);
   transition: opacity var(--transition-base), transform var(--transition-base);
