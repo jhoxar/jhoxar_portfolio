@@ -66,9 +66,7 @@
     height: 200px;
   }
   
-  .work-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+ 
   .blog-grid {
     grid-template-columns: repeat(2, 1fr);
   }

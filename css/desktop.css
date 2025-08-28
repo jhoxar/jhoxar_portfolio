@@ -14,9 +14,7 @@
   .skill-card {
     flex: 0 0 calc(33.333% - var(--spacing-lg));
   }
-  .work-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  
   .blog-grid {
     grid-template-columns: repeat(3, 1fr);
   }
