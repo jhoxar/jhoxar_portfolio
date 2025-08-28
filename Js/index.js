@@ -21,6 +21,12 @@ const languageOptions = document.querySelectorAll('.language-option');
 const currentLangSpan = document.querySelector('.current-lang');
 const cv = document.getElementById("cv")
 
+
+//cards projects
+
+
+
+
 // Download CV
 function downloadAndOpenCV(e) {
   e.preventDefault();
@@ -994,17 +1000,8 @@ function handleParallax() {
         parallaxImage.style.transform = `translate(-50%, -50%) translate3d(0, ${scrolled * speed}px, 0)`;
     }
     
-    // Project images parallax
-    const projectImages = document.querySelectorAll('.project-img');
-    projectImages.forEach(img => {
-        const rect = img.getBoundingClientRect();
-        const speed = 0.1;
-        
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            const yPos = -(scrolled - img.offsetTop) * speed;
-            img.style.transform = `translate3d(0, ${yPos}px, 0)`;
-        }
-    });
+    
+    
 }
 
 // Intersection Observer for animations

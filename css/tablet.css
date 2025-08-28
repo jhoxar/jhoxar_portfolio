@@ -65,9 +65,7 @@
     width: 200px;
     height: 200px;
   }
-  .project-card:hover .project-img {
-    transform: scale(1.1);
-  }
+  
   .work-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -92,12 +90,7 @@
   .hidden-md { display: none; }
 
 
-  .project-card:hover .project-img {
-    transform: none;
-  }
-  .project-card.pulse-in .project-img {
-    animation: pulseIn 0.6s ease-out;
-  }
+  
 
   .nav-menu li svg{
   opacity: 0;
