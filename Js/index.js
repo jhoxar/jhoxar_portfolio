@@ -29,389 +29,496 @@ let currentLanguage = 'en';
 let typingTimeoutId;
 let isTyping = false;
 
+//Constants
+const MAIL_TO = "jhoxardev@gmail.com";
+const MAIL_SUBJECT = "Quiero colaborar contigo";
+
 // Translations
 const translations = {
-    en: {
-        nav: {
-            home: "Start",
-            skills: "Skills",
-            work: "Work",
-            testimonials: "Love",
-            blog: "Posts",
-            contact: "Hi"
-        },
-        hero: {
-            greeting: "Hi, I'm Jhon Ramirez",
-            subtitle: "I translate strategy into scalable full-stack & AI solutions.",
-            downloadCV: "Download CV",
-            letsTalk: "Let's Talk"
-        },
-        skills: {
-            title: "My Skills",
-            subtitle: "Technologies and expertise that drive innovation",
-            frontend: {
-                title: "Frontend Development",
-                description: "Modern React, Vue.js, and vanilla JS applications with responsive design"
-            },
-            backend: {
-                title: "Backend Development", 
-                description: "Scalable APIs, microservices, and cloud infrastructure solutions"
-            },
-            automation: {
-                title: "AI & Automation",
-                description: "Machine learning models and intelligent automation systems"
-            },
-            database: {
-                title: "Database Design",
-                description: "Optimized database architectures for high-performance applications"
-            }
-        },
-        work: {
-            title: "My Work",
-            subtitle: "Featured projects showcasing innovation and impact",
-            project1: {
-                title: "AI-Powered E-commerce Platform",
-                problem: "Problem:",
-                problemDesc: "Traditional e-commerce lacks personalization.",
-                solution: "Solution:",
-                solutionDesc: "AI-driven recommendation engine with real-time analytics.",
-                result: "Result:",
-                resultDesc: "40% increase in conversion rates and user engagement."
-            },
-            project2: {
-                title: "Real-time Analytics Dashboard",
-                problemDesc: "Complex data visualization needs.",
-                solutionDesc: "Interactive dashboard with real-time data streaming.",
-                resultDesc: "Reduced decision-making time by 60% for stakeholders."
-            },
-            project3: {
-                title: "Intelligent Process Automation",
-                problemDesc: "Manual repetitive business processes.",
-                solutionDesc: "AI-driven automation with natural language processing.",
-                resultDesc: "80% reduction in processing time and human errors."
-            },
-            liveDemo: "Live Demo",
-            github: "GitHub"
-        },
-        testimonials: {
-            title: "Testimonials",
-            subtitle: "What clients and colleagues say about my work"
-        },
-        blog: {
-            title: "Latest Insights",
-            subtitle: "Thoughts on technology, innovation, and digital transformation",
-            readMore: "Read more",
-            viewMore: "Ver más artículos"
-        },
-        contact: {
-            title: "Ready to automate and scale your business?",
-            subtitle: "Let's discuss how we can transform your ideas into powerful solutions",
-            namePlaceholder: "Your full name",
-            emailPlaceholder: "your.email@company.com",
-            companyPlaceholder: "Company name (optional)",
-            messagePlaceholder: "Tell me about your project and how I can help you scale your business...",
-            sendMessage: "Send Message",
-            sending: "Sending...",
-            nameRequired: "Name is required",
-            emailRequired: "Email is required",
-            emailInvalid: "Please enter a valid email",
-            messageRequired: "Message is required",
-            messageLength: "Message must be at least 10 characters long",
-            successMessage: "Message sent successfully! I'll get back to you soon.",
-            errorMessage: "Error sending message. Please try again."
-        },
-        footer: {
-            description: "Software Engineer | Full-Stack & Automation Specialist",
-            navigation: "Navigation",
-            copyright: "© 2025 Jhon Ramirez. All rights reserved."
-        }
+  en: {
+    nav: {
+      home: "Home",
+      skills: "Skills",
+      work: "Projects",
+      testimonials: "Voices",
+      blog: "Insights",
+      contact: "Contact"
     },
-    es: {
-        nav: {
-            home: "Ir",
-            skills: "Tech",
-            work: "Proy",
-            testimonials: "Voz",
-            blog: "Post",
-            contact: "Habla"
-        },
-        hero: {
-            greeting: "Hola, soy Jhon Ramirez",
-            subtitle: "Transformo estrategias en soluciones escalables de full-stack e IA.",
-            downloadCV: "Descargar CV",
-            letsTalk: "Hablemos"
-        },
-        skills: {
-            title: "Mis Habilidades",
-            subtitle: "Tecnologías y experiencia que impulsan la innovación",
-            frontend: {
-                title: "Desarrollo Frontend",
-                description: "Aplicaciones modernas con React, Vue.js y JavaScript vanilla con diseño responsivo"
-            },
-            backend: {
-                title: "Desarrollo Backend",
-                description: "APIs escalables, microservicios y soluciones de infraestructura en la nube"
-            },
-            automation: {
-                title: "IA y Automatización",
-                description: "Modelos de aprendizaje automático y sistemas de automatización inteligente"
-            },
-            database: {
-                title: "Diseño de Bases de Datos",
-                description: "Arquitecturas de bases de datos optimizadas para aplicaciones de alto rendimiento"
-            }
-        },
-        work: {
-            title: "Mi Trabajo",
-            subtitle: "Proyectos destacados que muestran innovación e impacto",
-            project1: {
-                title: "Plataforma E-commerce con IA",
-                problem: "Problema:",
-                problemDesc: "El e-commerce tradicional carece de personalización.",
-                solution: "Solución:",
-                solutionDesc: "Motor de recomendaciones impulsado por IA con análisis en tiempo real.",
-                result: "Resultado:",
-                resultDesc: "40% de aumento en tasas de conversión y engagement del usuario."
-            },
-            project2: {
-                title: "Dashboard de Análisis en Tiempo Real",
-                problemDesc: "Necesidades complejas de visualización de datos.",
-                solutionDesc: "Dashboard interactivo con streaming de datos en tiempo real.",
-                resultDesc: "Reducción del 60% en tiempo de toma de decisiones para stakeholders."
-            },
-            project3: {
-                title: "Automatización Inteligente de Procesos",
-                problemDesc: "Procesos empresariales manuales y repetitivos.",
-                solutionDesc: "Automatización impulsada por IA con procesamiento de lenguaje natural.",
-                resultDesc: "80% de reducción en tiempo de procesamiento y errores humanos."
-            },
-            liveDemo: "Demo en Vivo",
-            github: "GitHub"
-        },
-        testimonials: {
-            title: "Testimonios",
-            subtitle: "Lo que dicen clientes y colegas sobre mi trabajo"
-        },
-        blog: {
-            title: "Últimas Reflexiones",
-            subtitle: "Pensamientos sobre tecnología, innovación y transformación digital",
-            readMore: "Leer más",
-            viewMore: "Ver más artículos"
-        },
-        contact: {
-            title: "¿Listo para automatizar y escalar tu negocio?",
-            subtitle: "Conversemos sobre cómo podemos transformar tus ideas en soluciones poderosas",
-            namePlaceholder: "Tu nombre completo",
-            emailPlaceholder: "tu.email@empresa.com",
-            companyPlaceholder: "Nombre de la empresa (opcional)",
-            messagePlaceholder: "Cuéntame sobre tu proyecto y cómo puedo ayudarte a escalar tu negocio...",
-            sendMessage: "Enviar Mensaje",
-            sending: "Enviando...",
-            nameRequired: "El nombre es requerido",
-            emailRequired: "El email es requerido",
-            emailInvalid: "Por favor ingresa un email válido",
-            messageRequired: "El mensaje es requerido",
-            messageLength: "El mensaje debe tener al menos 10 caracteres",
-            successMessage: "¡Mensaje enviado exitosamente! Te contactaré pronto.",
-            errorMessage: "Error al enviar el mensaje. Por favor intenta de nuevo."
-        },
-        footer: {
-            description: "Ingeniero de Software | Especialista en Full-Stack y Automatización",
-            navigation: "Navegación",
-            copyright: "© 2025 Jhon Ramirez. Todos los derechos reservados."
-        }
+    hero: {
+      greeting: "Hi, I'm Jhon Ramirez",
+      subtitle: "Full-Stack Developer · UX/UI Designer · AI Automation Specialist",
+      tagline: "I craft digital products that blend design, technology, and automation to help businesses scale.",
+      downloadCV: "Download CV",
+      letsTalk: "Let’s Talk"
     },
-    de: {
-        nav: {
-            home: "Home",
-            skills: "Stack",
-            work: "Works",
-            testimonials: "Echo",
-            blog: "Texte",
-            contact: "Hi"
-        },
-        hero: {
-            greeting: "Hallo, ich bin Jhon Ramirez",
-            subtitle: "Ich übersetze Strategien in skalierbare Full-Stack- und KI-Lösungen.",
-            downloadCV: "Lebenslauf herunterladen",
-            letsTalk: "Sprechen wir"
-        },
-        skills: {
-            title: "Meine Fähigkeiten",
-            subtitle: "Technologien und Expertise, die Innovation vorantreiben",
-            frontend: {
-                title: "Frontend-Entwicklung",
-                description: "Moderne React-, Vue.js- und Vanilla-JS-Anwendungen mit responsivem Design"
-            },
-            backend: {
-                title: "Backend-Entwicklung",
-                description: "Skalierbare APIs, Microservices und Cloud-Infrastrukturlösungen"
-            },
-            automation: {
-                title: "KI & Automatisierung",
-                description: "Machine-Learning-Modelle und intelligente Automatisierungssysteme"
-            },
-            database: {
-                title: "Datenbankdesign",
-                description: "Optimierte Datenbankarchitekturen für hochperformante Anwendungen"
-            }
-        },
-        work: {
-            title: "Meine Arbeit",
-            subtitle: "Ausgewählte Projekte, die Innovation und Wirkung zeigen",
-            project1: {
-                title: "KI-gestützte E-Commerce-Plattform",
-                problem: "Problem:",
-                problemDesc: "Traditioneller E-Commerce mangelt an Personalisierung.",
-                solution: "Lösung:",
-                solutionDesc: "KI-gestützte Empfehlungsmaschine mit Echtzeitanalyse.",
-                result: "Ergebnis:",
-                resultDesc: "40% Steigerung der Conversion-Raten und Nutzerbindung."
-            },
-            project2: {
-                title: "Echtzeit-Analytics-Dashboard",
-                problemDesc: "Komplexe Datenvisualisierungsanforderungen.",
-                solutionDesc: "Interaktives Dashboard mit Echtzeit-Datenstreaming.",
-                resultDesc: "60% Reduzierung der Entscheidungszeit für Stakeholder."
-            },
-            project3: {
-                title: "Intelligente Prozessautomatisierung",
-                problemDesc: "Manuelle repetitive Geschäftsprozesse.",
-                solutionDesc: "KI-gestützte Automatisierung mit natürlicher Sprachverarbeitung.",
-                resultDesc: "80% Reduzierung der Bearbeitungszeit und menschlicher Fehler."
-            },
-            liveDemo: "Live Demo",
-            github: "GitHub"
-        },
-        testimonials: {
-            title: "Referenzen",
-            subtitle: "Was Kunden und Kollegen über meine Arbeit sagen"
-        },
-        blog: {
-            title: "Neueste Erkenntnisse",
-            subtitle: "Gedanken zu Technologie, Innovation und digitaler Transformation",
-            readMore: "Weiterlesen",
-            viewMore: "Mehr Artikel anzeigen"
-        },
-        contact: {
-            title: "Bereit, Ihr Unternehmen zu automatisieren und zu skalieren?",
-            subtitle: "Lassen Sie uns besprechen, wie wir Ihre Ideen in leistungsstarke Lösungen verwandeln können",
-            namePlaceholder: "Ihr vollständiger Name",
-            emailPlaceholder: "ihre.email@unternehmen.com",
-            companyPlaceholder: "Firmenname (optional)",
-            messagePlaceholder: "Erzählen Sie mir von Ihrem Projekt und wie ich Ihnen beim Skalieren Ihres Unternehmens helfen kann...",
-            sendMessage: "Nachricht senden",
-            sending: "Wird gesendet...",
-            nameRequired: "Name ist erforderlich",
-            emailRequired: "E-Mail ist erforderlich",
-            emailInvalid: "Bitte geben Sie eine gültige E-Mail ein",
-            messageRequired: "Nachricht ist erforderlich",
-            messageLength: "Nachricht muss mindestens 10 Zeichen lang sein",
-            successMessage: "Nachricht erfolgreich gesendet! Ich melde mich bald bei Ihnen.",
-            errorMessage: "Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut."
-        },
-        footer: {
-            description: "Software Engineer | Full-Stack & Automatisierungs-Spezialist",
-            navigation: "Navigation",
-            copyright: "© 2025 Jhon Ramirez. Alle Rechte vorbehalten."
-        }
+    skills: {
+      title: "My Skills",
+      subtitle: "Tech + Design + AI: the toolkit that drives business growth",
+      frontend: {
+        title: "Frontend Development",
+        description: "Interactive and responsive apps with React, Vue.js, and modern JavaScript"
+      },
+      backend: {
+        title: "Backend Development",
+        description: "Scalable APIs, secure microservices, and cloud-based architectures"
+      },
+      automation: {
+        title: "AI & Automation",
+        description: "Intelligent workflows, AI-driven bots, and machine learning integrations"
+      },
+      database: {
+        title: "Database Design",
+        description: "Efficient and scalable database structures for high-performance apps"
+      }
     },
-    pt: {
-        nav: {
-            home: "Ir",
-            skills: "Tech",
-            work: "Obra",
-            testimonials: "Eco",
-            blog: "Blog",
-            contact: "Oi"
-        },
-        hero: {
-            greeting: "Olá, eu sou Jhon Ramirez",
-            subtitle: "Transformo estratégias em soluções escaláveis de full-stack e IA.",
-            downloadCV: "Baixar CV",
-            letsTalk: "Vamos Conversar"
-        },
-        skills: {
-            title: "Minhas Habilidades",
-            subtitle: "Tecnologias e experiência que impulsionam a inovação",
-            frontend: {
-                title: "Desenvolvimento Frontend",
-                description: "Aplicações modernas React, Vue.js e JavaScript vanilla com design responsivo"
-            },
-            backend: {
-                title: "Desenvolvimento Backend",
-                description: "APIs escaláveis, microserviços e soluções de infraestrutura em nuvem"
-            },
-            automation: {
-                title: "IA e Automação",
-                description: "Modelos de machine learning e sistemas de automação inteligente"
-            },
-            database: {
-                title: "Design de Banco de Dados",
-                description: "Arquiteturas de banco de dados otimizadas para aplicações de alta performance"
-            }
-        },
-        work: {
-            title: "Meu Trabalho",
-            subtitle: "Projetos em destaque mostrando inovação e impacto",
-            project1: {
-                title: "Plataforma E-commerce com IA",
-                problem: "Problema:",
-                problemDesc: "E-commerce tradicional carece de personalização.",
-                solution: "Solução:",
-                solutionDesc: "Engine de recomendação impulsionado por IA com análises em tempo real.",
-                result: "Resultado:",
-                resultDesc: "40% de aumento nas taxas de conversão e engajamento do usuário."
-            },
-            project2: {
-                title: "Dashboard de Analytics em Tempo Real",
-                problemDesc: "Necessidades complexas de visualização de dados.",
-                solutionDesc: "Dashboard interativo com streaming de dados em tempo real.",
-                resultDesc: "Redução de 60% no tempo de tomada de decisão para stakeholders."
-            },
-            project3: {
-                title: "Automação Inteligente de Processos",
-                problemDesc: "Processos empresariais manuais e repetitivos.",
-                solutionDesc: "Automação impulsionada por IA com processamento de linguagem natural.",
-                resultDesc: "80% de redução no tempo de processamento e erros humanos."
-            },
-            liveDemo: "Demo ao Vivo",
-            github: "GitHub"
-        },
-        testimonials: {
-            title: "Depoimentos",
-            subtitle: "O que clientes e colegas dizem sobre meu trabalho"
-        },
-        blog: {
-            title: "Últimas Reflexões",
-            subtitle: "Pensamentos sobre tecnologia, inovação e transformação digital",
-            readMore: "Ler mais",
-            viewMore: "Ver mais artigos"
-        },
-        contact: {
-            title: "Pronto para automatizar e escalar seu negócio?",
-            subtitle: "Vamos discutir como podemos transformar suas ideias em soluções poderosas",
-            namePlaceholder: "Seu nome completo",
-            emailPlaceholder: "seu.email@empresa.com",
-            companyPlaceholder: "Nome da empresa (opcional)",
-            messagePlaceholder: "Conte-me sobre seu projeto e como posso ajudá-lo a escalar seu negócio...",
-            sendMessage: "Enviar Mensagem",
-            sending: "Enviando...",
-            nameRequired: "Nome é obrigatório",
-            emailRequired: "Email é obrigatório",
-            emailInvalid: "Por favor, insira um email válido",
-            messageRequired: "Mensagem é obrigatória",
-            messageLength: "Mensagem deve ter pelo menos 10 caracteres",
-            successMessage: "Mensagem enviada com sucesso! Entrarei em contato em breve.",
-            errorMessage: "Erro ao enviar mensagem. Por favor, tente novamente."
-        },
-        footer: {
-            description: "Engenheiro de Software | Especialista em Full-Stack e Automação",
-            navigation: "Navegação",
-            copyright: "© 2025 Jhon Ramirez. Todos os direitos reservados."
-        }
+    work: {
+  title: "Projects",
+  subtitle: "Solutions that merge code, design, and automation",
+  project1: {
+    title: "Movie Market – Real-time Movie Explorer",
+    problem: "Challenge:",
+    problemDesc: "Users needed an easy way to discover, search, and save movies with real-time updates.",
+    solution: "Solution:",
+    solutionDesc: "A sleek web app consuming REST APIs with advanced DOM manipulation for fluid interaction.",
+    result: "Impact:",
+    resultDesc: "Delivered an intuitive and engaging movie discovery experience powered by live data."
+  },
+  project2: {
+    title: "Minesweeper with Lives – Classic Game Reinvented",
+    problem: "Challenge:",
+    problemDesc: "The classic Minesweeper lacked innovation and replayability.",
+    solution: "Solution:",
+    solutionDesc: "Built a JavaScript-based game with lives, timer, enemies, and collectibles.",
+    result: "Impact:",
+    resultDesc: "Created a fresh, more dynamic version of Minesweeper with higher engagement."
+  },
+  project3: {
+    title: "Guitar Shop – Modern E-commerce with React",
+    problem: "Challenge:",
+    problemDesc: "A need for a modern, responsive e-commerce focused on musical instruments.",
+    solution: "Solution:",
+    solutionDesc: "Developed an online guitar store with React, dynamic cart, and clean component architecture.",
+    result: "Impact:",
+    resultDesc: "Improved user shopping experience with a sleek UI and optimized flow for conversions."
+  },
+  liveDemo: "Live Demo",
+  github: "View Code"
+},
+    testimonials: {
+      title: "Testimonials",
+      subtitle: "What people say about working with me"
+    },
+    blog: {
+      title: "Insights",
+      subtitle: "Thoughts on coding, UX, and intelligent automation",
+      readMore: "Read more",
+      viewMore: "View all articles"
+    },
+    contact: {
+      title: "Let’s build something amazing",
+      subtitle: "Ready to combine design, code, and AI to transform your business?",
+      namePlaceholder: "Your name",
+      emailPlaceholder: "your@email.com",
+      companyPlaceholder: "Company (optional)",
+      messagePlaceholder: "Tell me about your project...",
+      sendMessage: "Send Message",
+      sending: "Sending...",
+      nameRequired: "Name is required",
+      emailRequired: "Email is required",
+      emailInvalid: "Enter a valid email",
+      messageRequired: "Message is required",
+      messageLength: "Message must be at least 10 characters",
+      successMessage: "Message sent successfully! I'll get back soon.",
+      errorMessage: "Error sending message. Try again."
+    },
+    footer: {
+      description: "Full-Stack Developer | UX/UI Designer | AI Automation",
+      navigation: "Navigation",
+      copyright: "© 2025 Jhon Ramirez. All rights reserved."
     }
+  },
+
+  es: {
+    nav: {
+      home: "Inicio",
+      skills: "Habilidades",
+      work: "Proyectos",
+      testimonials: "Testimonios",
+      blog: "Blog",
+      contact: "Contacto"
+    },
+    hero: {
+      greeting: "Hola, soy Jhon Ramirez",
+      subtitle: "Full-Stack Developer · UX/UI · Automatización con IA",
+      tagline: "Diseño y desarrollo experiencias digitales que combinan código, diseño y automatización para hacer crecer negocios.",
+      downloadCV: "Descargar CV",
+      letsTalk: "Hablemos"
+    },
+    skills: {
+      title: "Mis Habilidades",
+      subtitle: "Tecnología, diseño e IA: mi caja de herramientas para impulsar innovación",
+      frontend: {
+        title: "Desarrollo Frontend",
+        description: "Apps modernas e interactivas con React, Vue.js y JavaScript"
+      },
+      backend: {
+        title: "Desarrollo Backend",
+        description: "APIs escalables, microservicios seguros y arquitectura en la nube"
+      },
+      automation: {
+        title: "IA y Automatización",
+        description: "Automatizaciones inteligentes, bots y modelos de machine learning"
+      },
+      database: {
+        title: "Diseño de Bases de Datos",
+        description: "Arquitecturas eficientes y escalables para apps de alto rendimiento"
+      }
+    },
+    work: {
+  title: "Proyectos",
+  subtitle: "Soluciones que integran diseño, código e inteligencia artificial",
+  project1: {
+    title: "Movie Market – Explorador de Películas en Tiempo Real",
+    problem: "Reto:",
+    problemDesc: "Los usuarios necesitaban una forma sencilla de descubrir, buscar y guardar películas con actualizaciones en tiempo real.",
+    solution: "Solución:",
+    solutionDesc: "Una web app elegante que consume APIs REST con manipulación avanzada del DOM para una experiencia fluida.",
+    result: "Impacto:",
+    resultDesc: "Se entregó una experiencia de descubrimiento de películas intuitiva y atractiva, con datos en vivo."
+  },
+  project2: {
+    title: "Buscaminas con Vidas – El clásico reinventado",
+    problem: "Reto:",
+    problemDesc: "El Buscaminas clásico carecía de innovación y rejugabilidad.",
+    solution: "Solución:",
+    solutionDesc: "Un juego en JavaScript con vidas, temporizador, enemigos y coleccionables.",
+    result: "Impacto:",
+    resultDesc: "Se creó una versión más dinámica y divertida de Buscaminas con mayor engagement."
+  },
+  project3: {
+    title: "Guitar Shop – E-commerce Moderno con React",
+    problem: "Reto:",
+    problemDesc: "Se necesitaba un e-commerce moderno y responsivo enfocado en instrumentos musicales.",
+    solution: "Solución:",
+    solutionDesc: "Tienda online de guitarras construida en React con carrito dinámico y arquitectura modular.",
+    result: "Impacto:",
+    resultDesc: "Mejoró la experiencia de compra con una UI elegante y un flujo optimizado para conversiones."
+  },
+  liveDemo: "Ver Demo",
+  github: "Ver Código"
+}
+,
+    testimonials: {
+      title: "Testimonios",
+      subtitle: "Lo que dicen al trabajar conmigo"
+    },
+    blog: {
+      title: "Reflexiones",
+      subtitle: "Ideas sobre programación, diseño y automatización inteligente",
+      readMore: "Leer más",
+      viewMore: "Ver todos los artículos"
+    },
+    contact: {
+      title: "Construyamos algo increíble",
+      subtitle: "¿Listo para combinar diseño, código e IA en tu negocio?",
+      namePlaceholder: "Tu nombre",
+      emailPlaceholder: "tu@email.com",
+      companyPlaceholder: "Empresa (opcional)",
+      messagePlaceholder: "Cuéntame sobre tu proyecto...",
+      sendMessage: "Enviar mensaje",
+      sending: "Enviando...",
+      nameRequired: "El nombre es requerido",
+      emailRequired: "El email es requerido",
+      emailInvalid: "Ingresa un email válido",
+      messageRequired: "El mensaje es requerido",
+      messageLength: "El mensaje debe tener al menos 10 caracteres",
+      successMessage: "¡Mensaje enviado! Te contactaré pronto.",
+      errorMessage: "Error al enviar el mensaje. Intenta de nuevo."
+    },
+    footer: {
+      description: "Full-Stack Developer | UX/UI | IA & Automatización",
+      navigation: "Navegación",
+      copyright: "© 2025 Jhon Ramirez. Todos los derechos reservados."
+    }
+  },
+
+  de: {
+    nav: {
+      home: "Start",
+      skills: "Fähigkeiten",
+      work: "Projekte",
+      testimonials: "Stimmen",
+      blog: "Blog",
+      contact: "Kontakt"
+    },
+    hero: {
+      greeting: "Hallo, ich bin Jhon Ramirez",
+      subtitle: "Full-Stack Developer · UX/UI Designer · KI-Automatisierung",
+      tagline: "Ich entwickle digitale Produkte, die Design, Technologie und KI-Automatisierung kombinieren, um Unternehmen zu skalieren.",
+      downloadCV: "Lebenslauf herunterladen",
+      letsTalk: "Lass uns reden"
+    },
+    skills: {
+      title: "Fähigkeiten",
+      subtitle: "Technologie + Design + KI: mein Werkzeugkasten für Wachstum",
+      frontend: {
+        title: "Frontend-Entwicklung",
+        description: "Interaktive und responsive Apps mit React, Vue.js und modernem JavaScript"
+      },
+      backend: {
+        title: "Backend-Entwicklung",
+        description: "Skalierbare APIs, sichere Microservices und Cloud-Architektur"
+      },
+      automation: {
+        title: "KI & Automatisierung",
+        description: "Intelligente Workflows, Bots und Machine-Learning-Integration"
+      },
+      database: {
+        title: "Datenbankdesign",
+        description: "Effiziente und skalierbare Strukturen für leistungsstarke Anwendungen"
+      }
+    },
+    work: {
+  title: "Projetos",
+  subtitle: "Soluções que unem código, design e automação",
+  project1: {
+    title: "Movie Market – Explorador de Filmes em Tempo Real",
+    problem: "Desafio:",
+    problemDesc: "Os usuários precisavam de uma forma simples de descobrir, buscar e salvar filmes com atualizações em tempo real.",
+    solution: "Solução:",
+    solutionDesc: "Uma web app elegante que consome APIs REST e utiliza manipulação avançada do DOM para interações fluidas.",
+    result: "Impacto:",
+    resultDesc: "Proporcionou uma experiência intuitiva e envolvente de descoberta de filmes com dados ao vivo."
+  },
+  project2: {
+    title: "Campo Minado com Vidas – O clássico reinventado",
+    problem: "Desafio:",
+    problemDesc: "O Campo Minado clássico carecia de inovação e rejogabilidade.",
+    solution: "Solução:",
+    solutionDesc: "Jogo em JavaScript com vidas, cronômetro, inimigos e itens colecionáveis.",
+    result: "Impacto:",
+    resultDesc: "Criou uma versão mais dinâmica e divertida do clássico, aumentando o engajamento."
+  },
+  project3: {
+    title: "Guitar Shop – E-commerce Moderno com React",
+    problem: "Desafio:",
+    problemDesc: "Necessidade de um e-commerce moderno e responsivo para instrumentos musicais.",
+    solution: "Solução:",
+    solutionDesc: "Loja online de guitarras desenvolvida em React com carrinho dinâmico e arquitetura de componentes reutilizáveis.",
+    result: "Impacto:",
+    resultDesc: "Melhorou a experiência de compra com uma interface elegante e fluxo otimizado para conversão."
+  },
+  liveDemo: "Ver Demo",
+  github: "Ver Código"
+}
+,
+    testimonials: {
+      title: "Referenzen",
+      subtitle: "Was andere über die Zusammenarbeit sagen"
+    },
+    blog: {
+      title: "Gedanken",
+      subtitle: "Beiträge zu Code, UX und Automatisierung",
+      readMore: "Weiterlesen",
+      viewMore: "Alle Artikel"
+    },
+    contact: {
+      title: "Lass uns etwas Großartiges bauen",
+      subtitle: "Bereit, Design, Code und KI zu vereinen?",
+      namePlaceholder: "Dein Name",
+      emailPlaceholder: "deine@email.com",
+      companyPlaceholder: "Firma (optional)",
+      messagePlaceholder: "Erzähl mir von deinem Projekt...",
+      sendMessage: "Nachricht senden",
+      sending: "Wird gesendet...",
+      nameRequired: "Name erforderlich",
+      emailRequired: "E-Mail erforderlich",
+      emailInvalid: "Bitte gültige E-Mail eingeben",
+      messageRequired: "Nachricht erforderlich",
+      messageLength: "Mindestens 10 Zeichen",
+      successMessage: "Nachricht gesendet! Ich melde mich bald.",
+      errorMessage: "Fehler beim Senden. Bitte erneut versuchen."
+    },
+    footer: {
+      description: "Full-Stack Developer | UX/UI Designer | KI & Automatisierung",
+      navigation: "Navigation",
+      copyright: "© 2025 Jhon Ramirez. Alle Rechte vorbehalten."
+    }
+  },
+
+  pt: {
+    nav: {
+      home: "Início",
+      skills: "Habilidades",
+      work: "Projetos",
+      testimonials: "Depoimentos",
+      blog: "Blog",
+      contact: "Contato"
+    },
+    hero: {
+      greeting: "Olá, eu sou Jhon Ramirez",
+      subtitle: "Full-Stack Developer · UX/UI · Automação com IA",
+      tagline: "Crio experiências digitais unindo design, tecnologia e automação inteligente para escalar negócios.",
+      downloadCV: "Baixar CV",
+      letsTalk: "Vamos Conversar"
+    },
+    skills: {
+      title: "Minhas Habilidades",
+      subtitle: "Tecnologia, design e IA: meu kit para inovação",
+      frontend: {
+        title: "Desenvolvimento Frontend",
+        description: "Apps modernos e responsivos com React, Vue.js e JavaScript"
+      },
+      backend: {
+        title: "Desenvolvimento Backend",
+        description: "APIs escaláveis, microsserviços seguros e arquitetura em nuvem"
+      },
+      automation: {
+        title: "IA & Automação",
+        description: "Fluxos inteligentes, bots e integrações de machine learning"
+      },
+      database: {
+        title: "Design de Banco de Dados",
+        description: "Arquiteturas eficientes e escaláveis para alta performance"
+      }
+    },
+   work: {
+  title: "Projetos",
+  subtitle: "Soluções que unem código, design e automação",
+  project1: {
+    title: "Movie Market – Explorador de Filmes em Tempo Real",
+    problem: "Desafio:",
+    problemDesc: "Os usuários precisavam de uma forma simples de descobrir, buscar e salvar filmes com atualizações em tempo real.",
+    solution: "Solução:",
+    solutionDesc: "Uma web app elegante que consome APIs REST e utiliza manipulação avançada do DOM para interações fluidas.",
+    result: "Impacto:",
+    resultDesc: "Proporcionou uma experiência intuitiva e envolvente de descoberta de filmes com dados ao vivo."
+  },
+  project2: {
+    title: "Campo Minado com Vidas – O clássico reinventado",
+    problem: "Desafio:",
+    problemDesc: "O Campo Minado clássico carecia de inovação e rejogabilidade.",
+    solution: "Solução:",
+    solutionDesc: "Jogo em JavaScript com vidas, cronômetro, inimigos e itens colecionáveis.",
+    result: "Impacto:",
+    resultDesc: "Criou uma versão mais dinâmica e divertida do clássico, aumentando o engajamento."
+  },
+  project3: {
+    title: "Guitar Shop – E-commerce Moderno com React",
+    problem: "Desafio:",
+    problemDesc: "Necessidade de um e-commerce moderno e responsivo para instrumentos musicais.",
+    solution: "Solução:",
+    solutionDesc: "Loja online de guitarras desenvolvida em React com carrinho dinâmico e arquitetura de componentes reutilizáveis.",
+    result: "Impacto:",
+    resultDesc: "Melhorou a experiência de compra com uma interface elegante e fluxo otimizado para conversão."
+  },
+  liveDemo: "Ver Demo",
+  github: "Ver Código"
+}
+,
+    testimonials: {
+      title: "Depoimentos",
+      subtitle: "O que dizem sobre trabalhar comigo"
+    },
+    blog: {
+      title: "Reflexões",
+      subtitle: "Ideias sobre programação, UX e automação inteligente",
+      readMore: "Ler mais",
+      viewMore: "Ver todos os artigos"
+    },
+    contact: {
+      title: "Vamos construir algo incrível",
+      subtitle: "Pronto para unir design, código e IA?",
+      namePlaceholder: "Seu nome",
+      emailPlaceholder: "seu@email.com",
+      companyPlaceholder: "Empresa (opcional)",
+      messagePlaceholder: "Fale sobre seu projeto...",
+      sendMessage: "Enviar mensagem",
+      sending: "Enviando...",
+      nameRequired: "Nome é obrigatório",
+      emailRequired: "Email é obrigatório",
+      emailInvalid: "Insira um email válido",
+      messageRequired: "Mensagem obrigatória",
+      messageLength: "Mensagem deve ter pelo menos 10 caracteres",
+      successMessage: "Mensagem enviada! Retornarei em breve.",
+      errorMessage: "Erro no envio. Tente novamente."
+    },
+    footer: {
+      description: "Full-Stack Developer | UX/UI | IA & Automação",
+      navigation: "Navegação",
+      copyright: "© 2025 Jhon Ramirez. Todos os direitos reservados."
+    }
+  }
 };
+
+//Handle Submit
+function buildMailto({ name, email, company, message }) {
+  const lines = [
+    "Hola Jhon,",
+    "",
+    "Quiero colaborar contigo.",
+    "",
+    `— Nombre: ${name}`,
+    `— Email: ${email}`,
+    company ? `— Empresa: ${company}` : null,
+    "",
+    "Mensaje:",
+    message
+  ].filter(Boolean).join("\n");
+
+  const params = new URLSearchParams({
+    subject: MAIL_SUBJECT,
+    body: lines
+  });
+
+  return `mailto:${MAIL_TO}?${params.toString()}`;
+}
+
+async function handleFormSubmit(e) {
+  e.preventDefault();
+
+  if (typeof isFormSubmitting !== "undefined" && isFormSubmitting) return;
+  if (typeof validateForm === "function" && !validateForm()) return;
+
+  if (typeof setFormLoading === "function") setFormLoading(true);
+
+  try {
+    const formData = new FormData(contactForm);
+    const payload = {
+      name: (formData.get("name") || "").toString().trim(),
+      email: (formData.get("email") || "").toString().trim(),
+      company: (formData.get("company") || "").toString().trim(),
+      message: (formData.get("message") || "").toString().trim()
+    };
+
+    // 1) Abre el cliente de correo en una pestaña nueva
+    const mailtoUrl = buildMailto(payload);
+    window.open(mailtoUrl, "_blank");
+
+    // 2) (Opcional) Envía en segundo plano a Formspree para registro
+    fetch(contactForm.action, {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" }
+    }).catch(() => { /* silencioso */ });
+
+    // UI feedback
+    const t = translations?.[currentLanguage] || translations.en;
+    if (typeof showFormMessage === "function") {
+      showFormMessage(t.contact.successMessage, "success");
+    }
+    contactForm.reset();
+  } catch (error) {
+    console.error("Form submission error:", error);
+    const t = translations?.[currentLanguage] || translations.en;
+    if (typeof showFormMessage === "function") {
+      showFormMessage(t.contact.errorMessage, "error");
+    }
+  } finally {
+    if (typeof setFormLoading === "function") setFormLoading(false);
+  }
+}
+
 
 // Language Management
 function initLanguage() {
@@ -907,41 +1014,7 @@ function setFormLoading(loading) {
     submitBtn.disabled = loading;
 }
 
-async function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    if (isFormSubmitting || !validateForm()) {
-        return;
-    }
-    
-    setFormLoading(true);
-    
-    try {
-        const formData = new FormData(contactForm);
-        
-        const response = await fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-        
-        if (response.ok) {
-            const t = translations[currentLanguage];
-            showFormMessage(t.contact.successMessage, 'success');
-            contactForm.reset();
-        } else {
-            throw new Error('Network response was not ok');
-        }
-    } catch (error) {
-        console.error('Form submission error:', error);
-        const t = translations[currentLanguage];
-        showFormMessage(t.contact.errorMessage, 'error');
-    } finally {
-        setFormLoading(false);
-    }
-}
+
 
 // Parallax Effects
 function handleParallax() {
