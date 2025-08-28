@@ -4,6 +4,12 @@
   .section-title {
     font-size: var(--font-size-5xl);
   }
+
+  .hero{
+     padding: 220px 0 var(--spacing-3xl);
+  }
+
+
   .hero-title {
     font-size: var(--font-size-5xl);
   }

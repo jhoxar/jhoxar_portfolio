@@ -551,7 +551,6 @@ body:not(.dark) .nav-menu.active li svg{
 /* Hero Section */
 .hero {
   position: relative;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;

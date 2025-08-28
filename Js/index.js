@@ -869,9 +869,7 @@ function nextSkillSlide() {
     
     if (currentSkillSlide < maxSlide) {
         currentSkillSlide++;
-    } else {
-        currentSkillSlide = 0; // Loop back to start
-    }
+    } 
     updateSkillsSlider();
 }
 

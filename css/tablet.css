@@ -38,6 +38,12 @@
   .nav-link {
     padding: var(--spacing-xs) var(--spacing-md);
   }
+
+  .hero{
+     padding: 180px 0 var(--spacing-3xl);
+  }
+
+  
   .hero-content {
     flex-direction: row;
     align-items: center;
