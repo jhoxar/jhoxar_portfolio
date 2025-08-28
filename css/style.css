@@ -842,7 +842,7 @@ body:not(.dark) .nav-menu.active li svg{
   grid-template-columns: 1fr;
 }
 
-.project-card {
+/* .project-card {
   background: var(--clr-surface);
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -854,9 +854,9 @@ body:not(.dark) .nav-menu.active li svg{
 .project-card:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow-xl);
-}
+} */
 
-.project-image {
+/* .project-image {
   position: relative;
   overflow: hidden;
   height: 250px;
@@ -868,10 +868,10 @@ body:not(.dark) .nav-menu.active li svg{
   object-fit: cover;
   transition: transform var(--transition-slow);
 }
+ */
 
 
-
-.project-overlay {
+/* .project-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -883,11 +883,11 @@ body:not(.dark) .nav-menu.active li svg{
   justify-content: center;
   opacity: 0;
   transition: all var(--transition-base);
-}
+} */
 
-.project-card:hover .project-overlay {
+/* .project-card:hover .project-overlay {
   opacity: 1;
-}
+} */
 
 .project-links {
   display: flex;

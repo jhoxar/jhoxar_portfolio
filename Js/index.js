@@ -19,6 +19,29 @@ const languageToggle = document.getElementById('language-toggle');
 const languageDropdown = document.getElementById('language-dropdown');
 const languageOptions = document.querySelectorAll('.language-option');
 const currentLangSpan = document.querySelector('.current-lang');
+const cv = document.getElementById("cv")
+
+// Download CV
+function downloadAndOpenCV(e) {
+  e.preventDefault();
+
+  const fileUrl = './Assets/Docs/CVFS.pdf';
+
+  // 1) Abrir en nueva pestaña
+  window.open(fileUrl, '_blank');
+
+  // 2) Forzar descarga
+  const link = document.createElement('a');
+  link.href = fileUrl;
+  link.download = 'Jhon-Ramirez-CV.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// Asignar evento
+cv.addEventListener("click", downloadAndOpenCV);
+
 
 // State
 let currentSkillSlide = 0;
@@ -76,30 +99,17 @@ const translations = {
   subtitle: "Solutions that merge code, design, and automation",
   project1: {
     title: "Movie Market – Real-time Movie Explorer",
-    problem: "Challenge:",
-    problemDesc: "Users needed an easy way to discover, search, and save movies with real-time updates.",
-    solution: "Solution:",
-    solutionDesc: "A sleek web app consuming REST APIs with advanced DOM manipulation for fluid interaction.",
-    result: "Impact:",
-    resultDesc: "Delivered an intuitive and engaging movie discovery experience powered by live data."
+    problemDesc: "Movie Market is a sleek web app that lets users easily discover, search, and save movies in real time. Built with REST APIs and advanced DOM manipulation, it delivers a smooth, intuitive, and engaging movie discovery experience powered by live data.",
+   
   },
   project2: {
     title: "Minesweeper with Lives – Classic Game Reinvented",
-    problem: "Challenge:",
-    problemDesc: "The classic Minesweeper lacked innovation and replayability.",
-    solution: "Solution:",
-    solutionDesc: "Built a JavaScript-based game with lives, timer, enemies, and collectibles.",
-    result: "Impact:",
-    resultDesc: "Created a fresh, more dynamic version of Minesweeper with higher engagement."
+    problemDesc: "Minesweeper with Lives is a fresh take on the classic game. Built in JavaScript, it adds lives, a timer, enemies, and collectibles to create a more dynamic and engaging gameplay experience.",
+    
   },
   project3: {
     title: "Guitar Shop – Modern E-commerce with React",
-    problem: "Challenge:",
-    problemDesc: "A need for a modern, responsive e-commerce focused on musical instruments.",
-    solution: "Solution:",
-    solutionDesc: "Developed an online guitar store with React, dynamic cart, and clean component architecture.",
-    result: "Impact:",
-    resultDesc: "Improved user shopping experience with a sleek UI and optimized flow for conversions."
+    problemDesc: "Guitar Shop is a modern React-based e-commerce platform designed for musicians. With a dynamic cart and clean component architecture, it delivers a sleek shopping experience optimized for usability and conversions.",
   },
   liveDemo: "Live Demo",
   github: "View Code"
@@ -179,30 +189,18 @@ const translations = {
   subtitle: "Soluciones que integran diseño, código e inteligencia artificial",
   project1: {
     title: "Movie Market – Explorador de Películas en Tiempo Real",
-    problem: "Reto:",
-    problemDesc: "Los usuarios necesitaban una forma sencilla de descubrir, buscar y guardar películas con actualizaciones en tiempo real.",
-    solution: "Solución:",
-    solutionDesc: "Una web app elegante que consume APIs REST con manipulación avanzada del DOM para una experiencia fluida.",
-    result: "Impacto:",
-    resultDesc: "Se entregó una experiencia de descubrimiento de películas intuitiva y atractiva, con datos en vivo."
+    problemDesc: "Movie Market es una aplicación web moderna que permite descubrir, buscar y guardar películas en tiempo real. Desarrollada con APIs REST y manipulación avanzada del DOM, ofrece una experiencia fluida, intuitiva y atractiva impulsada por datos en vivo.",
+   
   },
   project2: {
     title: "Buscaminas con Vidas – El clásico reinventado",
-    problem: "Reto:",
-    problemDesc: "El Buscaminas clásico carecía de innovación y rejugabilidad.",
-    solution: "Solución:",
-    solutionDesc: "Un juego en JavaScript con vidas, temporizador, enemigos y coleccionables.",
-    result: "Impacto:",
-    resultDesc: "Se creó una versión más dinámica y divertida de Buscaminas con mayor engagement."
+    problemDesc: "Minesweeper con Vidas es una nueva versión del clásico juego. Creado en JavaScript, incorpora vidas, temporizador, enemigos y coleccionables para brindar una jugabilidad más dinámica y entretenida.",
+    
   },
   project3: {
     title: "Guitar Shop – E-commerce Moderno con React",
-    problem: "Reto:",
-    problemDesc: "Se necesitaba un e-commerce moderno y responsivo enfocado en instrumentos musicales.",
-    solution: "Solución:",
-    solutionDesc: "Tienda online de guitarras construida en React con carrito dinámico y arquitectura modular.",
-    result: "Impacto:",
-    resultDesc: "Mejoró la experiencia de compra con una UI elegante y un flujo optimizado para conversiones."
+    problemDesc: "Guitar Shop es una tienda online construida con React para músicos. Con carrito dinámico y una arquitectura limpia de componentes, ofrece una experiencia de compra elegante y optimizada para usabilidad y conversión.",
+   
   },
   liveDemo: "Ver Demo",
   github: "Ver Código"
@@ -283,30 +281,17 @@ const translations = {
   subtitle: "Soluções que unem código, design e automação",
   project1: {
     title: "Movie Market – Explorador de Filmes em Tempo Real",
-    problem: "Desafio:",
-    problemDesc: "Os usuários precisavam de uma forma simples de descobrir, buscar e salvar filmes com atualizações em tempo real.",
-    solution: "Solução:",
-    solutionDesc: "Uma web app elegante que consome APIs REST e utiliza manipulação avançada do DOM para interações fluidas.",
-    result: "Impacto:",
-    resultDesc: "Proporcionou uma experiência intuitiva e envolvente de descoberta de filmes com dados ao vivo."
+    problemDesc: "Movie Market ist eine moderne Web-App, mit der Nutzer Filme in Echtzeit entdecken, suchen und speichern können. Entwickelt mit REST-APIs und fortgeschrittener DOM-Manipulation bietet sie ein flüssiges, intuitives und ansprechendes Erlebnis mit Live-Daten.",
+    
   },
   project2: {
     title: "Campo Minado com Vidas – O clássico reinventado",
-    problem: "Desafio:",
-    problemDesc: "O Campo Minado clássico carecia de inovação e rejogabilidade.",
-    solution: "Solução:",
-    solutionDesc: "Jogo em JavaScript com vidas, cronômetro, inimigos e itens colecionáveis.",
-    result: "Impacto:",
-    resultDesc: "Criou uma versão mais dinâmica e divertida do clássico, aumentando o engajamento."
+    problemDesc: "Minesweeper mit Leben ist eine Neuinterpretation des klassischen Spiels. In JavaScript entwickelt, integriert es Leben, Timer, Gegner und Sammelobjekte, um ein dynamischeres und unterhaltsameres Spielerlebnis zu schaffen.",
   },
   project3: {
     title: "Guitar Shop – E-commerce Moderno com React",
-    problem: "Desafio:",
-    problemDesc: "Necessidade de um e-commerce moderno e responsivo para instrumentos musicais.",
-    solution: "Solução:",
-    solutionDesc: "Loja online de guitarras desenvolvida em React com carrinho dinâmico e arquitetura de componentes reutilizáveis.",
-    result: "Impacto:",
-    resultDesc: "Melhorou a experiência de compra com uma interface elegante e fluxo otimizado para conversão."
+    problemDesc: "Guitar Shop ist ein Online-Shop für Musiker, der mit React entwickelt wurde. Mit einem dynamischen Warenkorb und einer klaren Komponentenarchitektur bietet er ein elegantes Einkaufserlebnis, optimiert für Benutzerfreundlichkeit und Konversion.",
+   
   },
   liveDemo: "Ver Demo",
   github: "Ver Código"
@@ -387,30 +372,15 @@ const translations = {
   subtitle: "Soluções que unem código, design e automação",
   project1: {
     title: "Movie Market – Explorador de Filmes em Tempo Real",
-    problem: "Desafio:",
-    problemDesc: "Os usuários precisavam de uma forma simples de descobrir, buscar e salvar filmes com atualizações em tempo real.",
-    solution: "Solução:",
-    solutionDesc: "Uma web app elegante que consome APIs REST e utiliza manipulação avançada do DOM para interações fluidas.",
-    result: "Impacto:",
-    resultDesc: "Proporcionou uma experiência intuitiva e envolvente de descoberta de filmes com dados ao vivo."
+    problemDesc: "Movie Market é um aplicativo web moderno que permite aos usuários descobrir, buscar e salvar filmes em tempo real. Construído com REST APIs e manipulação avançada do DOM, oferece uma experiência fluida, intuitiva e envolvente com dados ao vivo."
   },
   project2: {
     title: "Campo Minado com Vidas – O clássico reinventado",
-    problem: "Desafio:",
-    problemDesc: "O Campo Minado clássico carecia de inovação e rejogabilidade.",
-    solution: "Solução:",
-    solutionDesc: "Jogo em JavaScript com vidas, cronômetro, inimigos e itens colecionáveis.",
-    result: "Impacto:",
-    resultDesc: "Criou uma versão mais dinâmica e divertida do clássico, aumentando o engajamento."
+    problemDesc: "Minesweeper com Vidas é uma nova versão do clássico jogo. Desenvolvido em JavaScript, adiciona vidas, cronômetro, inimigos e itens colecionáveis para criar uma jogabilidade mais dinâmica e divertida.",
   },
   project3: {
     title: "Guitar Shop – E-commerce Moderno com React",
-    problem: "Desafio:",
-    problemDesc: "Necessidade de um e-commerce moderno e responsivo para instrumentos musicais.",
-    solution: "Solução:",
-    solutionDesc: "Loja online de guitarras desenvolvida em React com carrinho dinâmico e arquitetura de componentes reutilizáveis.",
-    result: "Impacto:",
-    resultDesc: "Melhorou a experiência de compra com uma interface elegante e fluxo otimizado para conversão."
+    problemDesc: "Guitar Shop é uma loja online para músicos desenvolvida em React. Com carrinho dinâmico e arquitetura limpa de componentes, oferece uma experiência de compra elegante, otimizada para usabilidade e conversão.",
   },
   liveDemo: "Ver Demo",
   github: "Ver Código"
@@ -598,27 +568,24 @@ function updateLanguage(lang) {
         projectCards[0].querySelector('.project-title').textContent = t.work.project1.title;
         const project1Desc = projectCards[0].querySelector('.project-description');
         project1Desc.innerHTML = `
-            <strong>${t.work.project1.problem}</strong> ${t.work.project1.problemDesc}<br>
-            <strong>${t.work.project1.solution}</strong> ${t.work.project1.solutionDesc}<br>
-            <strong>${t.work.project1.result}</strong> ${t.work.project1.resultDesc}
+             ${t.work.project1.problemDesc}
+            
         `;
         
         // Project 2
         projectCards[1].querySelector('.project-title').textContent = t.work.project2.title;
         const project2Desc = projectCards[1].querySelector('.project-description');
         project2Desc.innerHTML = `
-            <strong>${t.work.project1.problem}</strong> ${t.work.project2.problemDesc}<br>
-            <strong>${t.work.project1.solution}</strong> ${t.work.project2.solutionDesc}<br>
-            <strong>${t.work.project1.result}</strong> ${t.work.project2.resultDesc}
+             ${t.work.project2.problemDesc}
+            
         `;
         
         // Project 3
         projectCards[2].querySelector('.project-title').textContent = t.work.project3.title;
         const project3Desc = projectCards[2].querySelector('.project-description');
         project3Desc.innerHTML = `
-            <strong>${t.work.project1.problem}</strong> ${t.work.project3.problemDesc}<br>
-            <strong>${t.work.project1.solution}</strong> ${t.work.project3.solutionDesc}<br>
-            <strong>${t.work.project1.result}</strong> ${t.work.project3.resultDesc}
+             ${t.work.project3.problemDesc}
+            
         `;
         
         // Update project links
