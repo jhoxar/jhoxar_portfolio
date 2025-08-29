@@ -501,7 +501,7 @@ body:not(.dark) .nav-logo__img {
   position: fixed;
   top: 59px;
   right: 0;
-  width: 50vw; /* ocupa la mitad derecha */
+  width: 90vw; /* ocupa la mitad derecha */
   height: 100vh;
   background: var(--clr-bg);
   flex-direction: column;
