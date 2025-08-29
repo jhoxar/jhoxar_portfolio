@@ -19,8 +19,8 @@ body.typing-done #typewriter-text::after {
 /* CSS Custom Properties */
 :root {
   /* Colors */
-  --clr-primary-from: #6366f1;
-  --clr-primary-to: #8b5cf6;
+  --clr-primary-from: #389a52;
+  --clr-primary-to: #212121;
   --clr-secondary-from: #14b8a6;
   --clr-secondary-to: #06b6d4;
   --clr-bg-light: #F2F4FF;
@@ -207,7 +207,9 @@ input, textarea {
 .btn-primary {
   background: var(--gradient-primary);
   color: white;
-  box-shadow: var(--shadow-md);
+  outline: none;
+  border: none;
+  
 }
 
 .btn-primary:hover {
@@ -244,15 +246,11 @@ input, textarea {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid var(--clr-border);
   z-index: var(--z-fixed);
   transition: all var(--transition-base);
 }
 
-body.dark .navbar {
-  background: rgba(15, 23, 42, 0.95);
-}
+
 
 .nav-container {
   display: flex;
@@ -261,7 +259,10 @@ body.dark .navbar {
   padding: var(--spacing-xs);
   max-width: 1280px;
   margin: 0 auto;
+   
 }
+
+
 
 
 
@@ -573,7 +574,7 @@ body:not(.dark) .nav-menu.active li svg{
   right: 0;
   bottom: 0;
   background: var(--gradient-primary);
-  opacity: 0.3;
+  opacity: 0.6;
   z-index: 2;
 }
 

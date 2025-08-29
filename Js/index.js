@@ -755,35 +755,27 @@ function closeMobileMenu() {
     document.body.style.overflow = '';
 }
 
-function smoothScrollToSection(targetId) {
-    const target = document.querySelector(targetId);
-    if (target) {
-        const navbar = document.querySelector('.navbar');
-        const offset = navbar.offsetHeight;
-        const targetPosition = target.offsetTop - offset;
-        
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    }
-}
+const navbar = document.querySelector('.navbar');
 
-// Navbar scroll effect
-function handleNavbarScroll() {
-    const navbar = document.querySelector('.navbar');
-    const scrolled = window.scrollY > 50;
-    
-    navbar.style.background = scrolled 
-        ? (document.body.classList.contains('dark') 
-            ? 'rgba(15, 23, 42, 0.98)' 
-            : 'rgba(255, 255, 255, 0.98)')
-        : (document.body.classList.contains('dark') 
-            ? 'rgba(15, 23, 42, 0.95)' 
-            : 'rgba(255, 255, 255, 0.95)');
-    
-    navbar.style.boxShadow = scrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none';
-}
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {  // Ajusta 50px según necesites
+        navbar.style.position = 'relative';
+        navbar.style.top = '0';
+        navbar.style.left = '0';
+        navbar.style.right = '0';
+        navbar.style.boxShadow = 'none';
+    } else {
+        navbar.style.position = 'fixed';
+        navbar.style.top = '';
+        navbar.style.left = '';
+        navbar.style.right = '';
+        navbar.style.boxShadow = 'none';
+    }
+});
+
+
+
+
 
 // --- Typewriter Sound ---
 const typingAudio = new Audio('../Assets/audio/keyboard_sound.wav');
