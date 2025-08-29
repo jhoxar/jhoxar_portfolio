@@ -75,7 +75,7 @@ const translations = {
     },
     hero: {
       greeting: "Hi, I'm Jhon Ramirez",
-      subtitle: "Full-Stack Developer · UX/UI Designer · AI Automation Specialist",
+      subtitle: "I turn code, design, and AI into digital experiences that make your business faster, smarter, and unforgettable.",
       tagline: "I craft digital products that blend design, technology, and automation to help businesses scale.",
       downloadCV: "Download CV",
       letsTalk: "Let’s Talk"
@@ -165,7 +165,7 @@ const translations = {
     },
     hero: {
       greeting: "Hola, soy Jhon Ramirez",
-      subtitle: "Full-Stack Developer · UX/UI · Automatización con IA",
+      subtitle: "Transformo código, diseño e IA en experiencias digitales que hacen que tu negocio sea más rápido, más inteligente e inolvidable.",
       tagline: "Diseño y desarrollo experiencias digitales que combinan código, diseño y automatización para hacer crecer negocios.",
       downloadCV: "Descargar CV",
       letsTalk: "Hablemos"
@@ -257,7 +257,7 @@ const translations = {
     },
     hero: {
       greeting: "Hallo, ich bin Jhon Ramirez",
-      subtitle: "Full-Stack Developer · UX/UI Designer · KI-Automatisierung",
+      subtitle: "Ich verwandle Code, Design und KI in digitale Erlebnisse, die dein Unternehmen schneller, intelligenter und unvergesslich machen.",
       tagline: "Ich entwickle digitale Produkte, die Design, Technologie und KI-Automatisierung kombinieren, um Unternehmen zu skalieren.",
       downloadCV: "Lebenslauf herunterladen",
       letsTalk: "Lass uns reden"
@@ -348,7 +348,7 @@ const translations = {
     },
     hero: {
       greeting: "Olá, eu sou Jhon Ramirez",
-      subtitle: "Full-Stack Developer · UX/UI · Automação com IA",
+      subtitle: "Transformo código, design e IA em experiências digitais que tornam o seu negócio mais rápido, inteligente e inesquecível.",
       tagline: "Crio experiências digitais unindo design, tecnologia e automação inteligente para escalar negócios.",
       downloadCV: "Baixar CV",
       letsTalk: "Vamos Conversar"
@@ -764,12 +764,14 @@ window.addEventListener('scroll', () => {
         navbar.style.left = '0';
         navbar.style.right = '0';
         navbar.style.boxShadow = 'none';
+       
     } else {
         navbar.style.position = 'fixed';
         navbar.style.top = '';
         navbar.style.left = '';
         navbar.style.right = '';
         navbar.style.boxShadow = 'none';
+        
     }
 });
 
@@ -979,20 +981,7 @@ function setFormLoading(loading) {
 
 
 
-// Parallax Effects
-function handleParallax() {
-    const scrolled = window.pageYOffset;
-    
-    // Hero parallax background
-    const parallaxImage = document.querySelector('.parallax-image');
-    if (parallaxImage) {
-        const speed = 0.5;
-        parallaxImage.style.transform = `translate(-50%, -50%) translate3d(0, ${scrolled * speed}px, 0)`;
-    }
-    
-    
-    
-}
+
 
 // Intersection Observer for animations
 function initIntersectionObserver() {
@@ -1200,14 +1189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     hamburger.addEventListener('click', toggleMobileMenu);
     
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            smoothScrollToSection(targetId);
-            closeMobileMenu();
-        });
-    });
+   
     
     // Skills slider controls
     skillsNext.addEventListener('click', () => {
@@ -1253,11 +1235,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Smooth scroll for anchor links
     document.addEventListener('click', (e) => {
-        if (e.target.matches('a[href^="#"]')) {
+        /* if (e.target.matches('a[href^="#"]')) {
             e.preventDefault();
             const targetId = e.target.getAttribute('href');
             smoothScrollToSection(targetId);
-        }
+        } */
         
         // Close language dropdown when clicking outside
         if (!languageToggle.contains(e.target) && !languageDropdown.contains(e.target)) {
